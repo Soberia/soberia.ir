@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="anchor" viewBox="0 0 640 640" fill="none" stroke="#666" stroke-width="50" stroke-linecap="round">
+  <path d="M515,368.13c2.58,109.05-84.14,199.63-189.11,202.76c-109.22,3.26-203.46-89.2-200.89-202.76"/>
+  <polygon stroke-linejoin="round" points="186.74,403.76 129.95,346.96 73.15,403.76 "/>
+  <polygon stroke-linejoin="round" points="566.85,404.13 510.06,347.33 453.26,404.13 "/>
+  <line x1="431.67" y1="113.11" x2="208.33" y2="113.11"/>
+  <line x1="431.67" y1="196.44" x2="208.33" y2="196.44"/>
+  <line x1="283.67" y1="66.22" x2="315.56" y2="610.67"/>
+  <line x1="351.44" y1="64.17" x2="320" y2="610.89"/>
+</svg>

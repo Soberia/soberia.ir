@@ -1,0 +1,13 @@
+@layer Elements, Common;
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: var(--theme-transition), width 0.5s; /* fluid window resizing */
+  background-color: var(--background);
+}
+
+.App ::selection {
+  background-color: var(--selection);
+}

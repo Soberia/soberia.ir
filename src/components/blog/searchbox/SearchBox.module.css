@@ -1,0 +1,260 @@
+.SearchBox {
+  margin: 2.5rem auto;
+  width: 70rem;
+  min-height: 5rem;
+  max-height: 5rem;
+  border-radius: 50px;
+  display: flex;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  transition: width 0.5s, var(--theme-transition);
+  box-shadow: 0 0 10px var(--shadow);
+  background-color: var(--background-2);
+}
+
+.SearchBox > :first-child {
+  width: 100%;
+  border-radius: inherit;
+  transition: inherit;
+  background-color: var(--background-3);
+}
+
+.SearchBox > :first-child > :first-child,
+.SearchBox > :last-child {
+  display: flex;
+  align-items: center;
+}
+
+.SearchBox > :last-child {
+  margin-right: 1rem;
+}
+
+.BoxWrapperExpand {
+  height: fit-content;
+  border-radius: 25px !important;
+  box-shadow: 
+    /* bottom */ 0 10px 10px -10px var(--shadow),
+    /* right */ 10px 0 10px -10px var(--shadow),
+    /* left */ -10px 0 10px -10px var(--shadow);
+}
+
+.Box {
+  margin-left: 1.5rem;
+  width: 100%;
+  height: 5rem;
+  font-size: 2rem;
+  font-family: inherit;
+  border: none;
+  color: var(--text);
+  background-color: inherit;
+
+  /* Resetting iOS Safari defaults */
+  -webkit-appearance: none;
+}
+.Box:focus {
+  outline: none;
+}
+.Box:disabled {
+  cursor: not-allowed;
+}
+.Box::placeholder {
+  user-select: none;
+  color: var(--text-3);
+}
+.Box::-webkit-search-decoration,
+.Box::-webkit-search-cancel-button,
+.Box::-webkit-search-results-button,
+.Box::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.Tags {
+  padding: 1rem;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.Tag {
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 100;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--theme-transition);
+  color: var(--text-2);
+  background-color: var(--background-2);
+}
+.Tag:hover {
+  background-color: var(--background);
+}
+
+.TagSelected,
+.IconSelected {
+  background-color: var(--background) !important;
+}
+
+.Icon {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  width: 3.5rem;
+  min-width: 3.5rem;
+}
+
+.Icon > svg {
+  stroke: var(--icon);
+  transition: stroke var(--theme-transition-time);
+}
+
+.IconMargin {
+  margin-right: 1rem;
+}
+
+.ClearIcon {
+  padding: 1rem;
+}
+
+.ClearIcon > svg {
+  opacity: 0.3;
+}
+
+.PostIcon,
+.MemoIcon {
+  position: relative;
+}
+.PostIcon::before {
+  content: 'POSTS';
+  right: -0.3rem;
+}
+.MemoIcon::before {
+  content: 'MEMOS';
+  right: -0.7rem;
+}
+.PostIcon::before,
+.MemoIcon::before {
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  position: absolute;
+  z-index: -1;
+  animation: expose 1.5s;
+  transition: var(--theme-transition);
+  color: var(--text);
+  background-color: var(--background-3);
+}
+
+@keyframes expose {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  50%,
+  80% {
+    opacity: 1;
+    transform: translateY(5rem);
+  }
+
+  90% {
+    opacity: 0;
+  }
+}
+
+/* Only on Safari */
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  /* Icons moving during the animation without this. */
+  .PostIcon::before,
+  .MemoIcon::before {
+    z-index: initial;
+  }
+}
+
+@media (hover: none) {
+  .Tag:hover {
+    background-color: var(--background-2);
+  }
+
+  .Icon:hover {
+    background-color: initial;
+  }
+}
+
+@media (max-width: 1000px) {
+  .SearchBox {
+    width: 60%;
+  }
+
+  .Tag {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .SearchBox {
+    margin-bottom: 1.5rem;
+  }
+
+  .SearchBox,
+  .Box {
+    min-height: 4rem;
+    max-height: 4rem;
+  }
+
+  .Box {
+    font-size: 1.5rem;
+  }
+
+  .BoxWrapperExpand {
+    border-radius: 20px !important;
+  }
+
+  .Tag {
+    font-size: 1rem;
+  }
+
+  .Icon {
+    width: 3rem;
+    min-width: 3rem;
+  }
+
+  .PostIcon::before,
+  .MemoIcon::before {
+    font-size: 0.8rem;
+  }
+
+  @keyframes expose {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+
+    50%,
+    80% {
+      opacity: 1;
+      transform: translateY(4rem);
+    }
+
+    90% {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .SearchBox {
+    width: 70%;
+    position: initial;
+  }
+}
+
+@media (max-width: 400px) {
+  .Tag {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,46 @@
+.ToC {
+  height: 100%;
+  grid-area: toc;
+  user-select: none;
+}
+
+.ToC nav {
+  height: 100%; /* for child `sticky` position */
+}
+
+.ToC nav ul {
+  padding: 0.25rem 0;
+  margin: 0 0.5rem 0 1rem;
+  max-height: 100vh;
+  font-size: 1.5rem;
+  list-style: none;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+.ToC nav ul li {
+  margin: 1rem 0.5rem;
+  border-left: 1px solid var(--border);
+  transition: border-left var(--theme-transition-time);
+}
+
+.Highlight {
+  border-left: 1px solid var(--link) !important;
+}
+
+.Highlight a,
+.ToC nav ul li a:hover {
+  color: var(--link) !important;
+}
+
+.ToC nav ul li a {
+  text-decoration: none;
+  color: var(--text-2);
+}
+
+@media (max-width: 1200px) {
+  .ToC {
+    display: none;
+  }
+}

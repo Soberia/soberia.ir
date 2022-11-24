@@ -1,0 +1,185 @@
+.Wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 80rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  margin: 1rem 0;
+}
+
+.Banner {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.Info {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: var(--theme-transition);
+  color: var(--text-2);
+  background-color: var(--background-3);
+}
+
+.Info > *,
+.Date > time {
+  margin-left: 0.5rem;
+}
+
+.InfoIcons {
+  padding: 0.5rem;
+  width: 3rem;
+}
+
+.InfoIcons > svg {
+  stroke: var(--icon);
+  transition: stroke var(--theme-transition-time);
+}
+
+.Date {
+  display: flex;
+  align-items: center;
+}
+
+.Date > time {
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.Main {
+  display: grid;
+  grid-template-areas: '. article toc';
+  grid-template-columns: 0fr 100% min(17vw, 30rem);
+  transition: var(--theme-transition);
+  color: var(--text);
+}
+
+.Main > :first-child {
+  grid-area: article;
+}
+
+.Title {
+  margin-top: 0;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.Article {
+  font-size: 2rem;
+}
+
+.Footer {
+  padding: 2rem 0;
+  margin-top: auto;
+  font-size: 1.25rem;
+  text-align: center;
+  user-select: none;
+  transition: var(--theme-transition);
+  color: var(--text-3);
+}
+
+@media (max-width: 1200px) {
+  .Wrapper {
+    width: 65%;
+  }
+
+  .Title {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Wrapper {
+    width: 55%;
+  }
+
+  .Date > time {
+    font-size: 1.25rem;
+  }
+
+  .Title {
+    font-size: 3rem;
+  }
+
+  .Article {
+    font-size: 1.8rem;
+  }
+
+  .Footer {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .Info {
+    height: 3.5rem;
+  }
+
+  .InfoIcons {
+    width: 2.5rem;
+  }
+
+  .Date > time {
+    font-size: 1rem;
+  }
+
+  .Title {
+    font-size: 2.5rem;
+  }
+
+  .Article {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .Wrapper {
+    width: 45%;
+  }
+
+  .Info {
+    height: 3rem;
+  }
+
+  .Date > time {
+    font-size: 0.8rem;
+    letter-spacing: -0.5px;
+  }
+
+  .Title {
+    font-size: 1.8rem;
+  }
+
+  .Article {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Wrapper {
+    width: 95%;
+  }
+
+  .Header {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .Title {
+    font-size: 2.5rem;
+  }
+
+  .Article {
+    font-size: 1.6rem;
+    line-height: 150%;
+  }
+}

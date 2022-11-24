@@ -1,0 +1,229 @@
+.Homepage {
+  margin: auto;
+  width: 80rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Logo {
+  width: 65rem;
+  align-self: center;
+  position: relative;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.7s, width 0.3s;
+  animation: glowing 10s infinite;
+}
+
+.LogoPullUp {
+  margin-top: 1rem;
+  width: 25rem;
+  top: 0;
+  transform: translateY(0);
+}
+
+.About {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  user-select: none;
+  animation: pull-up 0.7s;
+  transition: var(--theme-transition), var(--scrollbar-transition);
+  color: var(--text);
+}
+
+.AboutHide,
+.InfoHide {
+  /* Add this transition with `pull-up`
+  animation acts weirdly on Firefox. */
+  transition: transform 0.7s;
+  transform: translateY(100vh);
+}
+
+.Profile {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 35%;
+  transition: transform 1s;
+}
+.Profile:hover {
+  transform: scale(1.03);
+}
+
+.Biography {
+  text-align: center;
+}
+
+.Title {
+  margin: 1rem;
+  width: 20rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 50px;
+  text-align: center;
+  transition: inherit;
+  color: var(--text);
+  background-color: var(--button);
+}
+.Title:hover {
+  background-color: var(--button-hover);
+}
+
+.Language {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Star {
+  width: 2rem;
+  display: inline-block;
+}
+
+.Info {
+  margin: 1rem auto;
+  width: 60%;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+  animation: pull-up 1s;
+  transition: transform 1s ease-in, var(--theme-transition);
+  color: var(--text-2);
+}
+
+.Info > :first-child {
+  display: flex;
+  align-items: center;
+}
+
+.CookieSwitch {
+  --size: 3rem;
+  margin-left: 1rem;
+}
+
+@keyframes glowing {
+  50% {
+    filter: hue-rotate(135deg);
+  }
+}
+
+@keyframes pull-up {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    /* for Safari */
+  }
+}
+
+/* Only on Safari */
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  /* Animation glitch if `width` is included. */
+  .Logo {
+    transition: transform 0.7s;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Homepage {
+    width: 50rem;
+  }
+
+  .Logo {
+    width: 50rem;
+  }
+
+  .LogoPullUp {
+    width: 22rem;
+  }
+
+  .About {
+    font-size: 1.7rem;
+  }
+
+  .Profile {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  .Info {
+    width: 90%;
+  }
+}
+
+@media (max-width: 750px) {
+  .Logo {
+    width: 33rem;
+  }
+
+  .LogoPullUp {
+    width: 17rem;
+  }
+
+  .Profile {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .Star {
+    width: 1.5rem;
+  }
+
+  .Info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .CookieSwitch {
+    --size: 2.5rem;
+  }
+}
+
+@media (max-width: 750px) and (min-width: 501px) {
+  .About {
+    width: 100%;
+    font-size: 1.4rem;
+    align-self: center;
+  }
+
+  .Biography,
+  .Language {
+    width: 70%;
+  }
+}
+
+@media (max-width: 650px) and (min-width: 501px) {
+  .About {
+    width: 70%;
+  }
+}
+
+@media (max-width: 550px) {
+  .Logo {
+    width: 28rem;
+  }
+
+  .LogoPullUp {
+    width: 17rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Homepage {
+    width: 100vw;
+  }
+
+  .LogoPullUp {
+    margin-top: 6rem;
+  }
+
+  .About {
+    padding: 1rem;
+  }
+}

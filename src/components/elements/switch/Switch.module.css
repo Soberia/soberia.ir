@@ -1,0 +1,26 @@
+@layer Elements {
+  .Switch {
+    --size: 4rem;
+    width: var(--size);
+    height: calc(var(--size) / 2);
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--theme-transition);
+    background-color: var(--background-2);
+  }
+
+  .Handle {
+    width: 50%;
+    height: inherit;
+    position: absolute;
+    border-radius: 50%;
+    transition: transform 0.5s, var(--theme-transition);
+    background-color: #777;
+  }
+
+  .On {
+    transform: translateX(100%);
+    background-color: #156d48;
+  }
+}

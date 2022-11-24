@@ -1,0 +1,51 @@
+{
+  "name": "soberia.ir",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@soberia/matchmoji": "^1.1.0",
+    "@types/node": "^18.11.9",
+    "@types/prismjs": "^1.26.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "babel-plugin-prismjs": "^2.1.0",
+    "markdown-to-jsx": "^7.1.7",
+    "prismjs": "^1.29.0",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.3"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "prestart": "./bin/main.sh --blog-reference-generator",
+    "start": "react-app-rewired start",
+    "build": "./bin/main.sh --production-builder",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true,
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "trailingComma": "none"
+  },
+  "browserslist": {
+    "production": [
+      "> 0.2% and supports es6-module",
+      "not dead"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "config-overrides-path": "./bin/config-overrides.js"
+}

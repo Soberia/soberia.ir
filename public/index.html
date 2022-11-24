@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Soberia</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f3f3" />
+    <meta name="description" content="Personal developer blog by Saber Hayati." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Soberia" />
+    <meta name="twitter:description" content="Personal developer blog by Saber Hayati." />
+    <meta name="twitter:image" content="%REACT_APP_ORIGIN%%PUBLIC_URL%/game/icon512.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Soberia" />
+    <meta property="og:description" content="Personal developer blog by Saber Hayati." />
+    <meta property="og:image" content="%REACT_APP_ORIGIN%%PUBLIC_URL%/game/icon512.webp" /> <!-- Doesn't support WebP! -->
+    <meta property="og:url" content="%REACT_APP_ORIGIN%%PUBLIC_URL%" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" /> <!-- for Safari -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
+    <link rel="mask-icon" href="%PUBLIC_URL%/favicon.svg" color="#333" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GOOGLE_ANALYTICS_ID%"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f3f3;
+      }
+      #root {
+        height: 100vh;
+        display: flex;
+      }
+      #root > img {
+        margin: auto;
+        width: 20%;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #222;
+        }
+      }
+      @media (max-width: 600px) {
+        #root > img {
+          width: 30%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript</noscript>
+    <div id="root">
+      <img src="%PUBLIC_URL%/favicon.svg" draggable="false" alt="" />
+    </div>
+  </body>
+</html>

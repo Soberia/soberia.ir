@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": [
+          "bash",
+          "css",
+          "javascript",
+          "json",
+          "markdown",
+          "powershell",
+          "python",
+          "shell-session",
+          "sql",
+          "typescript",
+          "yaml"
+        ],
+        "plugins": [
+          "custom-class",
+          "match-braces",
+          "line-numbers",
+          "line-highlight"
+        ]
+      }
+    ]
+  ]
+}

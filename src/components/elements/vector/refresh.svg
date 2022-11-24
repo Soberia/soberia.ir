@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="refresh" viewBox="0 0 640 640" fill="none" stroke="#666" stroke-width="50">
+  <style>
+    #refresh:hover {animation: refresh 1s}
+    @keyframes refresh {to {transform: rotate(360deg)}}
+  </style>
+	<path d="M561.7,320c0,133.5-108.2,241.7-241.7,241.7S78.3,453.5,78.3,320S186.5,78.3,320,78.3c95.2,0,177.6,55,217,135"/>
+	<polyline stroke-linecap="round" points="429.2,217.8 545.9,217.8 545.9,102.1"/>
+</svg>

@@ -1,0 +1,82 @@
+.Code {
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  transition: var(--theme-transition);
+  color: var(--text-2);
+  background-color: var(--background-2);
+}
+
+.Link > code {
+  color: var(--link);
+}
+
+.Media {
+  margin: 2rem auto;
+  max-width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.SectionTitle {
+  position: relative;
+  cursor: pointer;
+}
+
+.Anchor {
+  width: 2rem;
+  display: none;
+  position: absolute;
+  left: -3rem;
+}
+
+.Anchor > svg {
+  transition: stroke 1s;
+}
+
+.AnchorSuccess,
+.AnchorFail,
+.SectionTitle:hover .Anchor {
+  display: inline-block;
+}
+
+.AnchorSuccess > svg {
+  stroke: green;
+}
+
+.AnchorFail > svg {
+  stroke: red;
+}
+
+@media (max-width: 1000px) {
+  .SectionTitle {
+    font-size: 2rem;
+  }
+
+  .Anchor {
+    width: 1.5rem;
+    left: -2.5rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .SectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .Anchor {
+    width: 1.25rem;
+    left: -2rem;
+  }
+}
+
+@media (max-width: 650px) and (min-width: 501px) {
+  .SectionTitle {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Anchor {
+    display: none;
+  }
+}

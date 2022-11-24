@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="lamp" viewBox="0 0 1280 2100">
+  <style>
+    #lamp {
+      transform-origin: 50% 0%;
+      animation: pendulum alternate infinite 2s ease-in-out;
+    }
+    @keyframes pendulum {
+      from {transform: rotate(-1deg)}
+      to {transform: rotate(1deg)}
+	  }
+    .off {
+      fill: none;
+      stroke: #ccc;
+      animation: none !important;
+    }
+  </style>
+  <radialGradient id="halo-gradient" cx="640" cy="1566" r="490" gradientUnits="userSpaceOnUse">
+    <stop offset="0.698" stop-color="#ffc32d" stop-opacity="0.419"/>
+    <stop offset="0.762" stop-color="#ffca47" stop-opacity="0.330"/>
+    <stop offset="0.822" stop-color="#ffd367" stop-opacity="0.247"/>
+    <stop offset="0.878" stop-color="#ffde8d" stop-opacity="0.169"/>
+    <stop offset="0.931" stop-color="#ffebb9" stop-opacity="0.111"/>
+    <stop offset="0.981" stop-color="#fff9e9" stop-opacity="0.055"/>
+    <stop stop-color="#fff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="blob-gradient" cx="640" cy="1500" r="390" gradientUnits="userSpaceOnUse">
+    <stop offset="0.476" stop-color="#ffb600"/>
+    <stop offset="0.848" stop-color="#f7ec13"/>
+  </radialGradient>
+  <g id="light">
+    <ellipse id="halo" fill="url(#halo-gradient)" stroke-width="0" cx="640" cy="1566" rx="530" ry="490"/>
+    <path id="blob" fill="url(#blob-gradient)" stroke="#fcee21" stroke-width="15" d="M246.3,1490.8c0,217.5,176.3,393.8,393.8,393.8c229.5,0,391-200.8,393.7-393.8c1.7-119.2-40.5-218.7-130.7-292.2l0,0c-0.3-0.2-31.6-27.4-39-32.5c-97-76.6,13.9-155.6-100.4-157.6c-123-2.2-124.9,1.9-243.3,0c-113.9-1.9-1.4,78.1-103.4,157.9c-4.5,3.1-9,6.3-13.3,9.6C308.1,1247.8,246.3,1362.1,246.3,1490.8z"/>
+    <path id="string" fill="none" stroke="#e65400" stroke-width="20" d="M687.1,1046.6v443.6c0,23.5,15.7,42.5,35,42.5h10c19.3,0,35-19,35-42.5l0,0c0-23.5-15.7-42.5-35-42.5h-184c-19.3,0-35,19-35,42.5l0,0c0,23.5,15.7,42.5,35,42.5h9c19.3,0,35-19,35-42.5v-443.6"/>
+  </g>
+  <g fill="none" stroke="#ccc" stroke-width="75" stroke-linecap="round">
+    <line x1="827.6" y1="1009.1" x2="452.6" y2="1009.1"/>
+    <line stroke="#aaa" x1="827.6" y1="934.6" x2="452.6" y2="934.6"/>
+    <line x1="827.6" y1="860.1" x2="452.6" y2="860.1"/>
+  </g>
+  <path fill="#aaa" d="M550.2,716.9h179.6c20.5,0,37.2,16.6,37.2,37.2v68.4H513v-68.4C513.1,733.6,529.7,716.9,550.2,716.9z"/>
+  <line stroke="#666" stroke-width="20" x1="640" y1="716.9" x2="640" y2="0.6"/>
+</svg>

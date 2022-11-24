@@ -1,0 +1,115 @@
+.Navigation {
+  margin: 1rem 0.5rem;
+  height: 100%;
+  font-size: 2.5rem;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+}
+
+.Inactive {
+  pointer-events: none;
+}
+
+.Items {
+  transition: transform 0.5s;
+}
+
+.ItemsHide {
+  transform: translateX(-20rem);
+}
+
+.Item {
+  margin-top: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0 50px 50px 0;
+  transform: translateX(-3rem);
+  transition: all 1s, background-color 0.5s, outline 0s;
+}
+.Item:hover {
+  transform: translateX(-1rem);
+}
+
+.Icon {
+  margin: 0 1rem 0 3rem;
+  width: 2rem;
+}
+
+.Icon > svg {
+  stroke: var(--icon);
+
+  /* @bug Doesn't work in Safari because parent element is anchor tag. */
+  transition: all var(--theme-transition-time);
+}
+
+@media (max-width: 750px) and (min-width: 501px) {
+  .Navigation {
+    font-size: 2rem;
+  }
+
+  .Item {
+    width: 14rem;
+  }
+
+  .Icon {
+    width: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Navigation {
+    margin: 0;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column-reverse;
+    justify-content: initial;
+    position: fixed;
+    top: 0;
+  }
+
+  .ItemsHide {
+    width: 0;
+  }
+
+  .Item {
+    --transition: all 1s, color 0.3s, outline 0s;
+    margin: 0;
+    width: 12rem;
+    flex-direction: row-reverse;
+    position: absolute;
+    z-index: var(--order);
+    transition: var(--transition);
+    color: transparent;
+  }
+  .Item,
+  .Item:hover {
+    transform: translateX(calc(var(--space) * 1rem));
+  }
+  .Item:hover {
+    transition: var(--transition), background-color 0s;
+  }
+
+  .ItemSelected {
+    --transition: all 1s, outline 0s;
+    width: 100%;
+    border-radius: initial;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: var(--transition);
+    box-shadow: 0 0 10px var(--shadow);
+    color: var(--text);
+    background-color: var(--background-3) !important;
+  }
+
+  .Icon {
+    margin-left: 1rem;
+  }
+}

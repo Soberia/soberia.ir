@@ -1,0 +1,46 @@
+.Blog {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  scrollbar-width: initial;
+}
+.Blog::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.Wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Loading,
+.Reload {
+  margin: auto;
+  width: 15rem;
+}
+
+.Reload {
+  width: 10rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .Loading {
+    width: 13rem;
+  }
+
+  .Reload {
+    width: 8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Blog {
+    padding-top: 4rem;
+  }
+}

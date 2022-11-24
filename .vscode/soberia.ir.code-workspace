@@ -1,0 +1,115 @@
+{
+	"settings": {
+		"files.exclude": {
+			"**/node_modules": true
+		}
+	},
+	"folders": [
+		{
+			"name": "Soberia.ir",
+			"path": "../"
+		}
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Soberia.ir",
+				"type": "msedge",
+				"request": "launch",
+				"url": "https://localhost:3000",
+				"webRoot": "${workspaceFolder}"
+			},
+			{
+				"name": "Soberia.ir (Attach)",
+				"type": "msedge",
+				"request": "attach",
+				"port": 9222,
+				"url": "https://localhost:3000*",
+				"webRoot": "${workspaceFolder}"
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"type": "shell",
+				"label": "Development (Windows Terminal)",
+				"command": "./bin/main.sh -t",
+				"presentation": {
+					"reveal": "silent",
+					"close": true
+				},
+				"icon": {
+					"id": "play",
+					"color": "terminal.ansiRed"
+				},
+				"problemMatcher": []
+			},
+			{
+				"type": "shell",
+				"label": "Port Forwarder",
+				"command": "./bin/port-forwarder.ps1",
+				"presentation": {
+					"reveal": "silent"
+				},
+				"options": {
+					"shell": {
+						"executable": "powershell.exe",
+						"args": [
+							"-ExecutionPolicy",
+							"Bypass",
+							"-File"
+						]
+					}
+				},
+				"icon": {
+					"id": "reply",
+					"color": "terminal.ansiGreen"
+				},
+				"problemMatcher": []
+			},
+			{
+				"type": "shell",
+				"label": "Calculate SLOC",
+				"command": "./bin/main.sh --sloc",
+				"icon": {
+					"id": "graph-line",
+					"color": "terminal.ansiBlack"
+				},
+				"problemMatcher": []
+			},
+			{
+				"type": "shell",
+				"label": "Generate Backup",
+				"command": "./bin/main.sh --backup",
+				"icon": {
+					"id": "save",
+					"color": "terminal.ansiBlue"
+				},
+				"problemMatcher": []
+			},
+			{
+				"type": "shell",
+				"label": "Blog Reference Generator",
+				"command": "./bin/main.sh --blog-reference-generator",
+				"icon": {
+					"id": "references",
+					"color": "terminal.ansiCyan"
+				},
+				"problemMatcher": []
+			},
+			{
+				"type": "shell",
+				"label": "Image Converter",
+				"command": "./bin/main.sh --image-converter",
+				"icon": {
+					"id": "arrow-swap",
+					"color": "terminal.ansiYellow"
+				},
+				"problemMatcher": []
+			}
+		]
+	}
+}

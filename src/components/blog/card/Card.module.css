@@ -1,0 +1,193 @@
+.Card {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 50rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  animation: pop-in 0.5s;
+  transition: all 0.5s, var(--theme-transition), outline;
+  box-shadow: 0 0 10px var(--shadow);
+  background-color: var(--background-2);
+}
+.Card:hover,
+.Card:focus-visible {
+  transform: scale(104%);
+}
+.Card:focus-visible {
+  animation: pop-in 0.5s, var(--focus-animation);
+}
+
+.Exit {
+  animation: pop-out 0.25s forwards;
+}
+
+.Banner {
+  width: 100%;
+  height: max-content;
+  border-radius: 10px;
+}
+
+.Title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.Description {
+  font-size: 2rem;
+}
+
+.Title,
+.Description {
+  margin: 0.5rem;
+  color: var(--text);
+  transition: var(--theme-transition);
+}
+
+.Tag {
+  margin: 0.25rem 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 100;
+  line-height: 100%;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+  transition: all 0.5s 0.1s, var(--theme-transition);
+  color: var(--text-2);
+  background-color: var(--background-3);
+}
+.Tag:hover {
+  margin: 0 0.25rem;
+  font-size: 2rem;
+  font-weight: 400;
+  background-color: var(--background);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pop-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Only on Firefox */
+@supports (-moz-appearance: none) {
+  /* Without setting `animation-fill-mode` property to `forwards`,
+  there's a glitch in animation. But with setting this property,
+  `transition` for `transform` not works anymore. Removing `transform`s
+  from the animations to address the issue.
+  See https://stackoverflow.com/questions/36551715
+  See https://stackoverflow.com/questions/21836259 */
+  .Card {
+    animation: pop-in 0.5s forwards;
+  }
+  .Card:focus-visible {
+    animation: pop-in 0.5s forwards, var(--focus-animation);
+  }
+
+  .Exit {
+    animation: pop-out 0.25s forwards !important;
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pop-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .Card {
+    margin-top: 1rem;
+    width: 50%;
+  }
+
+  .Title {
+    font-size: 2.25rem;
+  }
+
+  .Description {
+    font-size: 1.75rem;
+  }
+
+  .Tag {
+    font-size: 1.4rem;
+  }
+  .Tag:hover {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .Title {
+    font-size: 2rem;
+  }
+
+  .Description {
+    font-size: 1.5rem;
+  }
+
+  .Tag {
+    font-size: 1.2rem;
+  }
+  .Tag:hover {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .Card {
+    padding: 0.5rem;
+  }
+
+  .Title {
+    font-size: 1.75rem;
+  }
+
+  .Description {
+    font-size: 1.25rem;
+  }
+
+  .Tag {
+    font-size: 1rem;
+  }
+  .Tag:hover {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Card {
+    width: 80%;
+  }
+}

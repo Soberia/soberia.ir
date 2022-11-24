@@ -1,0 +1,39 @@
+.ThemeSwitcher {
+  width: 11rem;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.PullUp {
+  transform: translateY(-7.3rem);
+}
+
+.Hide {
+  transform: translateY(-20rem) !important;
+}
+
+@media (max-width: 750px), (max-height: 400px) {
+  .ThemeSwitcher {
+    width: 8rem;
+    transform: translateY(-1rem);
+  }
+
+  .PullUp {
+    transform: translateY(-5rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .ThemeSwitcher {
+    width: 5rem;
+    transform: translateY(3rem);
+
+    /* Avoiding overlap the search box. */
+    position: absolute;
+    top: 0;
+  }
+
+  .PullUp {
+    transform: translateY(0.5rem);
+  }
+}

@@ -1,0 +1,297 @@
+.CodeBlock {
+  --gap: 2rem;
+  --scrollbar-gap: 0rem;
+  padding: var(--gap);
+  font-size: 1.7rem;
+  line-height: 125%;
+  border-radius: 10px;
+  position: relative;
+  transition: var(--theme-transition);
+  color: var(--text);
+  background-color: var(--background-code-block);
+}
+.CodeBlock:hover .OptionIcon,
+.CodeBlock:focus-visible .OptionIcon,
+.CodeBlock:focus .OptionIcon:last-child::after,
+.OptionIcon:focus-visible {
+  opacity: 1;
+}
+.CodeBlock[data-filename]::after,
+.CodeBlock[data-lang]::after {
+  content: attr(data-filename);
+  padding: 0.5rem 0;
+  max-width: 50%;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  top: 0;
+  left: var(--gap);
+  border-bottom: 1px solid var(--shadow);
+  transition: border-bottom var(--theme-transition-time);
+}
+.CodeBlock[data-lang]::after {
+  content: attr(data-lang);
+}
+
+.CodeBlock > code {
+  --scrollbar-gap: 0.5rem;
+  padding: var(--scrollbar-gap) 0;
+  display: block;
+  overflow-x: auto;
+  tab-size: 4;
+}
+
+.CodeBlock [class*='line-highlight'] {
+  margin-top: calc(var(--gap) + var(--scrollbar-gap));
+  position: absolute;
+  left: 0;
+  border-radius: 2px;
+  user-select: none;
+  pointer-events: none;
+  background-color: var(--background-code-block-highlight);
+}
+
+.CodeBlock[class*='line-numbers'] {
+  --line-number-gap: 6rem;
+  padding-left: var(--line-number-gap);
+  counter-reset: linenumber;
+}
+
+.CodeBlock[class*='line-numbers'] > code [class*='line-numbers-rows'] {
+  padding-right: calc(var(--line-number-gap) / 3);
+  width: var(--line-number-gap);
+  letter-spacing: -1px;
+  text-align: right;
+  position: absolute;
+  top: calc(var(--gap) + var(--scrollbar-gap));
+  left: 0;
+  color: #6666666c;
+}
+
+.CodeBlock[class*='line-numbers']
+  > code
+  [class*='line-numbers-rows']
+  > span::before {
+  content: counter(linenumber);
+  counter-increment: linenumber;
+  display: block;
+}
+
+.Options {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.OptionIcon {
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.CodeBlock[data-lang] .OptionIcon[title='Language'],
+.CodeBlock[class*='line-numbers'] .OptionIcon[title='Line Numbers'] {
+  background-color: var(--background);
+}
+.OptionIcon:last-child::after {
+  content: 'ctrl+c';
+  font-size: 1rem;
+  letter-spacing: -1px;
+  position: absolute;
+  top: 3.5rem;
+  right: 0.75rem;
+  opacity: 0;
+}
+
+.OptionIcon > svg {
+  stroke: var(--icon);
+  transition: stroke var(--theme-transition-time);
+}
+
+.CopySuccess > svg,
+.CopyFail > svg {
+  transition: stroke 0.25s;
+}
+
+.CopySuccess > svg {
+  stroke: green;
+}
+
+.CopyFail > svg {
+  stroke: red;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  font-style: italic;
+  color: #6b6b6b;
+}
+
+.token.tag,
+.token.number,
+.token.symbol,
+.token.deleted {
+  color: #9b7474;
+}
+
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #af3968;
+}
+
+.token.property,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9cdcfe;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #e54b4b;
+}
+
+.token.punctuation,
+.token.variable {
+  color: #b6b8b5;
+}
+
+.token.regex,
+.token.important {
+  color: #d16969;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.operator {
+  color: #5c7a8b;
+}
+
+.token.parameter {
+  color: #92548dd5;
+}
+
+.token.boolean {
+  color: #569cd6;
+}
+
+.token.constant {
+  color: #4fc1ff;
+}
+
+.token.selector {
+  color: #d7ba7d;
+}
+
+.token.function {
+  color: #048d86;
+}
+
+.token.class-name {
+  color: #47a36a;
+}
+
+.token.triple-quoted-string {
+  color: #57666b;
+}
+
+.token.punctuation.brace-level-1,
+.token.punctuation.brace-level-5,
+.token.punctuation.brace-level-9 {
+  color: #ddd;
+}
+.token.punctuation.brace-level-2,
+.token.punctuation.brace-level-6,
+.token.punctuation.brace-level-10 {
+  color: #da70d6;
+}
+.token.punctuation.brace-level-3,
+.token.punctuation.brace-level-7,
+.token.punctuation.brace-level-11 {
+  color: #179fff;
+}
+.token.punctuation.brace-level-4,
+.token.punctuation.brace-level-8,
+.token.punctuation.brace-level-12 {
+  color: #45ccba;
+}
+
+/* Only on Safari */
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  /* There is no line highlight with enabled line
+  numbers due to zero calculated height by Prism. */
+  .CodeBlock [class*='line-highlight'] {
+    min-height: 1.75rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .CodeBlock {
+    font-size: 1.5rem;
+  }
+  .CodeBlock[class*='line-numbers'] {
+    --line-number-gap: 4rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .CodeBlock {
+    font-size: 1.3rem;
+  }
+  .CodeBlock[data-filename]::after,
+  .CodeBlock[data-lang]::after {
+    letter-spacing: 0px;
+  }
+}
+
+@media (max-width: 650px) and (min-width: 501px) {
+  .CodeBlock {
+    font-size: 1.1rem;
+  }
+  .CodeBlock[data-filename]::after,
+  .CodeBlock[data-lang]::after {
+    max-width: 40%;
+    font-size: 0.9rem;
+  }
+  .CodeBlock[class*='line-numbers'] {
+    --line-number-gap: 3rem;
+  }
+
+  .OptionIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .OptionIcon:last-child::after {
+    font-size: 0.9rem;
+    top: 3rem;
+  }
+}

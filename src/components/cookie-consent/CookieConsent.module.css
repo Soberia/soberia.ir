@@ -1,0 +1,64 @@
+.CookieConsent {
+  padding: 1rem;
+  margin: auto;
+  width: fit-content;
+  max-width: 60%;
+  font-size: 1.5rem;
+  text-align: center;
+  user-select: none;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  bottom: 2rem;
+  border-radius: 10px;
+  animation: show 1s;
+  transition: all 1s, var(--theme-transition);
+  box-shadow: 5px 5px 15px var(--shadow);
+  color: var(--text-2);
+  background-color: var(--background-2);
+}
+.CookieConsent:hover {
+  background-color: var(--background-3);
+}
+
+.Hide {
+  animation: hide 1s forwards;
+}
+
+.Button {
+  margin: 0 0.5rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+@keyframes show {
+  from {
+    transform: translateY(15rem);
+  }
+}
+
+@keyframes hide {
+  from {
+    /* for Safari */
+  }
+  to {
+    transform: translateY(15rem);
+  }
+}
+
+@media (max-width: 650px) {
+  .CookieConsent {
+    padding: 0.5rem;
+    max-width: 70%;
+    font-size: 1.3rem;
+    transform: translateX(5rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .CookieConsent {
+    max-width: 80%;
+    transform: initial;
+  }
+}
