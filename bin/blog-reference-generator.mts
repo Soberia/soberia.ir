@@ -1,7 +1,7 @@
 import {resolve} from 'path';
 import {fileURLToPath} from 'url';
 import {createReadStream} from 'fs';
-import {access, lstat, readdir, writeFile} from 'fs/promises';
+import {access, lstat, mkdir, readdir, writeFile} from 'fs/promises';
 import {createInterface} from 'readline/promises';
 
 const ROOT_PATH = resolve(fileURLToPath(import.meta.url), '../../');
@@ -20,7 +20,13 @@ function normalizeType(value: string) {
 for (const [path, category] of [
   [POST_PATH, 'post'],
   [MEMO_PATH, 'memo']
-])
+]) {
+  try {
+    await access(path);
+  } catch {
+    continue;
+  }
+
   for (const name of await readdir(path)) {
     let dirname: string | undefined;
     let filename: string | undefined;
@@ -95,6 +101,7 @@ for (const [path, category] of [
       }
     }
   }
+}
 
 // Sorting the articles by date in descending order
 references.sort((x, y) => {
@@ -104,6 +111,11 @@ references.sort((x, y) => {
 });
 
 // Storing the result as a `JSON` file
+try {
+  await access(BLOG_PATH);
+} catch {
+  await mkdir(BLOG_PATH, {recursive: true});
+}
 await writeFile(
   resolve(BLOG_PATH, 'reference.json'),
   JSON.stringify(references)
