@@ -19,8 +19,8 @@ tags: !!seq # Article's tags (optional)
 ...
 ```
 
-The articles should be placed in dedicated category in `/public/blog/{category}` directory.
-If the article has media file assets (e.g. banner image, videos, audios, ...), for better organization, the markdown and all the assets files can be placed in a sub directory of its category with an arbitrary name. However, the markdown file must be renamed to `main.md` after that.
+The articles should be placed in a dedicated category in the `public/blog/{category}` directory.
+If the article has media file assets (e.g. banner image, videos, audio, ...), for better organization, the markdown and all the assets files can be placed in a subdirectory of its category with an arbitrary name. However, the markdown file must be renamed to `main.md` after that.
 
 ```
 project
@@ -39,7 +39,7 @@ project
 
 All the options should be placed after the code block syntax name and separated with `,` character.
 
-- `filename`: The name of the file which this code is belongs to.
+- `filename`: The name of the file that this code belongs to.
 - `line`: The starting line number.
 - `highlight`: The line number(s) to be highlighted in comma separated values or ranges.
 
