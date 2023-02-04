@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@soberia/matchmoji": "^1.1.0",
+    "@soberia/matchmoji": "^1.1.1",
     "@types/node": "^18.11.18",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.27",
