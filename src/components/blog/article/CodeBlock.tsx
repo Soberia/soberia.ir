@@ -12,7 +12,13 @@ let loaded = false;
 export default function CodeBlock(props: {
   children: React.ReactElement<
     React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
-  >;
+  > & {
+    props: {
+      filename?: string;
+      line?: string;
+      highlight?: string;
+    };
+  };
 }) {
   const [languageToggle, setLanguageToggle] = useState(false);
   const [lineNumberToggle, setLineNumberToggle] = useState(false);
@@ -22,47 +28,39 @@ export default function CodeBlock(props: {
   const codeProps = Children.only(props.children).props;
   const optionIconClasses = [CSS.OptionIcon, CSSCommon.Box].join(' ');
 
-  let language: string | undefined;
-  let filename: string | undefined;
-  let lineNumber: string | undefined;
-  let lineHighlight: string | undefined;
-  if (codeProps.className) {
-    let matched = codeProps.className.match(/lang(uage)?-(\w*)/);
+  let language = codeProps.className;
+  if (language) {
+    const matched = language.match(/lang(uage)?-(\w*)/);
     language = matched ? matched[2] : undefined;
-    matched = codeProps.className.match(/filename=["'](.*?)["']/i);
-    filename = matched ? matched[1] : undefined;
-    matched = codeProps.className.match(/line=["'](.*?)["']/i);
-    lineNumber = matched ? matched[1] : undefined;
-    matched = codeProps.className.match(/highlight=["'](.*?)["']/i);
-    lineHighlight = matched ? matched[1] : undefined;
+  }
 
-    // Rearranging the highlight line numbers to match
-    // the line number at the beginning of code lines.
-    if (!lineNumberToggle && lineNumber && lineHighlight) {
-      const newLines = [];
-      const difference = Number(lineNumber) - 1;
-      for (const line of lineHighlight.replace(/s/, '').split(','))
-        if (line.includes('-')) {
-          const range = line.split('-');
-          const newRange = [
-            Number(range[0]) - difference,
-            Number(range[1]) - difference
-          ];
-          if (newRange[1] > 0) {
-            if (newRange[0] <= 0) {
-              newRange[0] = 1;
-            }
-            newLines.push(`${newRange[0]}-${newRange[1]}`);
+  // Rearranging the highlight line numbers to match
+  // the line number at the beginning of code lines.
+  let lineHighlight = codeProps.highlight;
+  if (!lineNumberToggle && codeProps.line && lineHighlight) {
+    const newLines = [];
+    const difference = Number(codeProps.line) - 1;
+    for (const line of lineHighlight.replace(/s/, '').split(','))
+      if (line.includes('-')) {
+        const range = line.split('-');
+        const newRange = [
+          Number(range[0]) - difference,
+          Number(range[1]) - difference
+        ];
+        if (newRange[1] > 0) {
+          if (newRange[0] <= 0) {
+            newRange[0] = 1;
           }
-        } else {
-          const newLine = Number(line) - difference;
-          if (newLine > 0) {
-            newLines.push(newLine);
-          }
+          newLines.push(`${newRange[0]}-${newRange[1]}`);
         }
+      } else {
+        const newLine = Number(line) - difference;
+        if (newLine > 0) {
+          newLines.push(newLine);
+        }
+      }
 
-      lineHighlight = newLines.join(',');
-    }
+    lineHighlight = newLines.join(',');
   }
 
   useEffect(() => {
@@ -107,8 +105,8 @@ export default function CodeBlock(props: {
     <Focus>
       <pre
         data-lang={languageToggle ? language : undefined}
-        data-filename={filename}
-        data-start={lineNumber}
+        data-filename={codeProps.filename}
+        data-start={codeProps.line}
         data-line={lineHighlight}
         className={[
           CSS.CodeBlock,

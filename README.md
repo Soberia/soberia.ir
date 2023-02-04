@@ -37,14 +37,14 @@ project
 
 ## Fenced code block options
 
-All the options should be placed after the code block syntax name and separated with `,` character.
+All the options should be placed after the code block syntax name and separated with space character.
 
 - `filename`: The name of the file that this code belongs to.
 - `line`: The starting line number.
 - `highlight`: The line number(s) to be highlighted in comma separated values or ranges.
 
 ````markdown
-```python,filename="hello_world.py",line="3",highlight="4,6-7"
+```python filename="hello_world.py" line="3" highlight="4,6-7"
 print('hello world @ line 3')
 # This line will be highlighted
 
