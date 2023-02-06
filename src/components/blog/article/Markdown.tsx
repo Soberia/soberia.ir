@@ -20,6 +20,9 @@ import {Metadata} from '../Blog';
 import {temporalStyle, isRelativeUrl} from '../../../utility/tools';
 
 type SourceProps = React.SourceHTMLAttributes<HTMLSourceElement>;
+type CreateElementOverride = Parameters<
+  NonNullable<MarkdownToJSX.Options['createElement']>
+>;
 
 export default memo(
   function Markdown(props: {data: string; metadata: Metadata; path: string}) {
@@ -55,11 +58,11 @@ export default memo(
      * All the relative links and media files URL will be converted
      * to an absolute URL.
      */
-    const overrideHandler: MarkdownToJSX.Options['createElement'] = (
-      type,
-      props,
-      children
-    ) => {
+    function overrideHandler(
+      type: CreateElementOverride[0],
+      props: {[key: string]: any},
+      children: CreateElementOverride[2]
+    ) {
       if (typeof type === 'string') {
         if (type === 'a') {
           type = Link;
@@ -130,7 +133,7 @@ export default memo(
       }
 
       return createElement(type, props, children);
-    };
+    }
 
     return (
       <Parser
