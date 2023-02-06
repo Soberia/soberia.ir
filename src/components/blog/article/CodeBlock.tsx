@@ -20,12 +20,11 @@ export default function CodeBlock(props: {
     };
   };
 }) {
+  const codeProps = Children.only(props.children).props;
   const [languageToggle, setLanguageToggle] = useState(false);
-  const [lineNumberToggle, setLineNumberToggle] = useState(false);
+  const [lineNumberToggle, setLineNumberToggle] = useState(!!codeProps.line);
   const code = useRef<HTMLElement>(null);
   const copy = useRef<SVGSVGElement>(null);
-
-  const codeProps = Children.only(props.children).props;
   const optionIconClasses = [CSS.OptionIcon, CSSCommon.Box].join(' ');
 
   let language = codeProps.className;
