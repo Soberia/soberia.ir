@@ -1,6 +1,6 @@
 {
   "name": "soberia.ir",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "@soberia/matchmoji": "^1.1.1",
