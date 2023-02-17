@@ -65,7 +65,7 @@ function setup() {
     # Installing "cwebp"
     if ! cwebp -version &>/dev/null; then
         ! $refreshed && sudo apt-get update
-        sudo apt-get -y install cwebp
+        sudo apt-get -y install webp
     fi
 
     if ! $refreshed; then
