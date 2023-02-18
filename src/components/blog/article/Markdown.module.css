@@ -17,6 +17,32 @@
   border-radius: 10px;
 }
 
+.Quote {
+  margin: auto 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 5px solid #666;
+  transition: var(--theme-transition);
+  color: var(--text);
+  background-color: var(--background-2);
+}
+
+.Quote > * {
+  margin: 0;
+}
+
+.QuoteSign {
+  user-select: none;
+}
+
+.QuoteNote {
+  color: #58a6ff;
+}
+
+.QuoteWarning {
+  color: #d29922;
+}
+
 .SectionTitle {
   position: relative;
   cursor: pointer;

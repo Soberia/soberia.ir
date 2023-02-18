@@ -53,6 +53,18 @@ print('hello world @ line 3')
 ```
 ````
 
+## Highlighting
+
+A `blockquote` can be used to highlight a section in the article. The first line must be `Note` or `Warning` following two white space characters.
+
+```markdown
+> **Note**  
+> This is a note
+
+> **Warning**  
+> This is a warning
+```
+
 ## Playing `GIF` videos in the article
 
 The `data-gif` attribute should be added to the `video` element:

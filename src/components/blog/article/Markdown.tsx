@@ -120,6 +120,35 @@ export default memo(
             // Only inline `code` elements and not the ones from the
             // `CodeBlock` component which are wrapped inside a `pre` tag
             props.className = [CSSCommon.Code, CSS.Code].join(' ');
+        } else if (type === 'blockquote') {
+          props.className = CSS.Quote;
+          if (Array.isArray(children) && children[0].type === 'p') {
+            const _children = children[0].props.children;
+            if (Array.isArray(_children)) {
+              const __children = _children[0]?.props?.children;
+              const child = (
+                Array.isArray(__children) ? __children : _children
+              )[0];
+              if (typeof child === 'string') {
+                const text = child.toLowerCase();
+                const isNote = text === 'note';
+                if (isNote || text === 'warning') {
+                  let className = CSS.QuoteNote;
+                  let sign = '🚩';
+                  if (!isNote) {
+                    className = CSS.QuoteWarning;
+                    sign = '⚠️';
+                  }
+                  _children[0] = (
+                    <strong key={text} className={className}>
+                      <span className={CSS.QuoteSign}>{sign}</span>
+                      {` ${text.charAt(0).toUpperCase()}${text.slice(1)}`}
+                    </strong>
+                  );
+                }
+              }
+            }
+          }
         } else if (type.match(/^h[123456]$/)) {
           props.className = CSS.SectionTitle;
           props.onClick = () => hashtagLinkHandler(props.id);
