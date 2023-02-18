@@ -69,21 +69,23 @@ export default memo(function Blog() {
     }
   }, [history.path]);
 
-  /** Checks whether the article's title includes the search query. */
-  function searchTitle(title: Metadata['title']) {
+  /** Checks whether the article's title or tags includes the search query. */
+  function filter(title: Metadata['title'], tags: Metadata['tags']) {
     if (search.query.length > 1) {
+      const query = search.query.trim().toLowerCase();
       const lowerCaseTitle = title.toLowerCase();
-      for (const word of search.query.toLowerCase().split(' ')) {
+      if (tags?.length)
+        for (const tag of tags)
+          if (tag.toLowerCase().startsWith(query)) {
+            return true;
+          }
+      for (const word of query.split(' '))
         if (!lowerCaseTitle.includes(word)) {
           return false;
         }
-      }
     }
-    return true;
-  }
 
-  /** Checks whether the articles's tags include the search query. */
-  function searchTags(tags: Metadata['tags']) {
+    // Filtering by the selected tags
     if (search.tags?.length) {
       if (tags?.length)
         for (const tag of search.tags) {
@@ -93,6 +95,7 @@ export default memo(function Blog() {
         }
       return false;
     }
+
     return true;
   }
 
@@ -144,8 +147,7 @@ export default memo(function Blog() {
                 metadata={metadata}
                 hide={
                   !categories.includes(metadata.category) ||
-                  !searchTitle(metadata.title) ||
-                  !searchTags(metadata.tags)
+                  !filter(metadata.title, metadata.tags)
                 }
                 setSearch={setSearch}
                 setHistory={setHistory}
