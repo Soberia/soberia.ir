@@ -61,7 +61,7 @@ export default function ToC(props: {
         scrollRef.scrollHeight
       ) {
         // Scroll position is in the end
-        sectionToHighlight = headlines.current[headlines.current.length - 1].id;
+        sectionToHighlight = headlines.current[headlines.current.length - 1]?.id;
       } else {
         for (const headline of headlines.current) {
           const rect = headline.getBoundingClientRect();
