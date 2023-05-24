@@ -143,7 +143,7 @@ export default memo(function Blog() {
           {showReference ? (
             reference.data!.map(metadata => (
               <Card
-                key={metadata.id}
+                key={`${metadata.category}-${metadata.id}`}
                 metadata={metadata}
                 hide={
                   !categories.includes(metadata.category) ||
