@@ -31,6 +31,14 @@
   margin: 0;
 }
 
+.Quote .Code {
+  filter: invert(80%);
+}
+
+.Quote pre[class*='CodeBlock'] {
+  margin: 1rem 0;
+}
+
 .QuoteSign {
   user-select: none;
 }
