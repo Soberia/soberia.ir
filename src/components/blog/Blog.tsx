@@ -34,9 +34,7 @@ const initialTitle = document.title;
 export default memo(function Blog() {
   const [history, setHistory] = useContext(historyContext)!;
   const [search, setSearch] = useState<SearchData>({query: ''});
-  const [categories, setCategories] = useState<Metadata['category'][]>([
-    Category.Post
-  ]);
+  const [categories, setCategories] = useState(Object.values(Category));
   const [article, setArticle] = useState<
     Omit<ReturnType<typeof useFetchFile>, 'data'>
   >({
