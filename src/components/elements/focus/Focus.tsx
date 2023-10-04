@@ -16,7 +16,7 @@ export default function Focus(props: {
           children.props.onKeyDown(event);
         } else if (event.key === 'Enter') {
           event.stopPropagation();
-          children.props?.onClick(event);
+          children.props?.onClick && children.props.onClick(event);
         }
       }
     } as React.HTMLAttributes<HTMLElement>);
