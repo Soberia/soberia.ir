@@ -1,6 +1,7 @@
 ---
 id: 2
 date: 2023-02-18T01:20:00Z
+dateEdited: 2024-01-23T13:50:00Z
 title: Poor man's hardware wallet with USB flash drive and Exodus
 description: The instruction to turn an USB drive to a hardware crypto wallet with Exodus crypto wallet app on the Windows.
 banner: banner.webp
@@ -57,7 +58,7 @@ Store the following script as `run.ps1` beside the `bin` directory on your USB d
 <#
     This script forces the Exodus app to store its data in the same
     place where it's located by changing the related registry keys.
-    Tested on Windows 11 (Build 25300) and Exodus version 23.2.13
+    Tested on Windows 11 (Build 26020) and Exodus version 24.1.15
 #>
 
 $ErrorActionPreference = "Stop"
@@ -133,7 +134,7 @@ try {
                     $Process.Kill()
                     break
                 }
-            } elseif (Select-String -Quiet -InputObject $Line -Pattern "loadedFrom") {
+            } elseif (Select-String -Quiet -InputObject $Line -Pattern "LOADED") {
                 $Loaded = $true
                 Write-Host -ForegroundColor DarkGreen " (Exodus is loaded successfully!)"
                 Write-Host -ForegroundColor DarkCyan "This window will be closed on Exodus exit." `
