@@ -97,7 +97,7 @@ function sloc() {
 # Generates project backup archive
 function backup() {
     local base=$(basename "$ROOT")
-    local backup=~/soberia.ir-$(date +%m.%d.%y).tar.gz
+    local backup=~/soberia.ir-$(date +%m.%d.%y).tar.xz
     XZ_OPT=-9 tar --exclude="$base"/{build,node_modules,package-lock.json} \
         -Jcpf $backup -C $(dirname "$ROOT") "$base"
 
