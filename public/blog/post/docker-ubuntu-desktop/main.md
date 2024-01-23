@@ -1,6 +1,7 @@
 ---
 id: 3
 date: 2023-05-28T20:37:00Z
+dateEdited: 2024-01-23T14:48:00Z
 title: Ubuntu Desktop on Docker Container
 description: The instruction to run Ubuntu with GNOME desktop environment on a Docker container and access it with the Remote Desktop client or X forwarding over SSH.
 banner: banner.webp
@@ -41,7 +42,8 @@ RUN useradd -s /bin/bash -m $USER -p $(openssl passwd "$PASS"); \
     gsettings set org.gnome.desktop.interface enable-animations true; \
     # Listening on wildcard address for X forwarding
     [ $X11Forwarding = 'true' ] && \
-        sed -i 's/#X11UseLocalhost yes/X11UseLocalhost no/g' /etc/ssh/sshd_config;
+        sed -i 's/#X11UseLocalhost yes/X11UseLocalhost no/g' /etc/ssh/sshd_config || \
+        :;
 
 CMD rm -f /var/run/xrdp/xrdp*.pid >/dev/null 2>&1; \
     service dbus restart >/dev/null 2>&1; \
